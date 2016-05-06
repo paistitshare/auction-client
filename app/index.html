@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="en" ng-app="auctionApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="auctionApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="auctionApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="auctionApp" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Auction</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.min.css">
+    <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap-markdown/css/bootstrap-markdown.min.css">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+<div class="header" ng-controller="auctionAppCtrl">
+    <div class="header-bottom">
+        <div class="container">
+            <div class="logo"><a href="#/" class="img-responsive">
+                <h1>Auction</h1></a></div>
+            <div class="head-nav"><span class="menu"></span>
+                <ul class="cl-effect-3">
+                    <li class="active"><a href="#/">Home</a></li>
+                    <li><a href="#/about">About</a></li>
+                    <li><a href="#/auctions">Auctions</a></li>
+                    <div class="clearfix"></div>
+                </ul>
+            </div>
+            &#x9;&#x9;&#x9;&#x9;&#x9;
+            <div class="header-right1" ng-if="userInfo.userName!=null">
+                <li><a href="#/profile/{{userInfo.userId}}">{{userInfo.userName}}</a></li>
+                <li><a href="" ng-click="logout()">Sign Out</a></li>
+            </div>
+            <div class="header-right1" ng-if="userInfo.userName==null">
+                <li><a href="#/signin">Sign In</a></li>
+                <li><a href="#/signup">Sign Up</a></li>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+<div ng-view></div>
+
+<div class="footer-bottom">
+    <div class="container">
+        <p>Copyrights &copy; 2015</p>
+    </div>
+</div>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="js/markdown.js"></script>
+<script src="js/to-markdown.js"></script>
+<script src="bower_components/bootstrap-markdown/js/bootstrap-markdown.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="app.js"></script>
+<script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js"></script>
+<script src="views/index/index.js"></script>
+<script src="views/404/404.js"></script>
+<script src="views/profile/profile.js"></script>
+<script src="views/auctions/auctions.js"></script>
+<script src="views/lot/lot.js"></script>
+<script src="views/signin/signin.js"></script>
+<script src="views/signup/signup.js"></script>
+<script src="views/about/about.js"></script>
+<script src="views/newitpl/newitpl.js"></script>
+<script src="views/newvtpl/newvtpl.js"></script>
+<script src="components/version/version.js"></script>
+<script src="components/version/version-directive.js"></script>
+<script src="components/version/interpolate-filter.js"></script>
+<script src="bower_components/jqcloud2/dist/jqcloud.min.js"></script>
+<script src="js/angular-jqcloud.js"></script>
+<script src="bower_components/ng-tags-input/ng-tags-input.min.js"></script>
+<script src="//widget.cloudinary.com/global/all.js"></script>
+<script src="bower_components/showdown/dist/showdown.js"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="../node_modules/angular-youtube-embed/dist/angular-youtube-embed.min.js"></script>
+<script src="js/toHtml.js"></script>
+<script type="text/javascript">
+//    $.cloudinary.config({api_key: '233287316764462', cloud_name: 'paistitshare'});
+//    $('.cloudinary-fileupload').bind('fileuploadstart', function (e) {
+//        $('.preview').html('Upload started...');
+//    });
+//    $('.cloudinary-fileupload').bind('cloudinarydone', function (e, data) {
+//        $('.preview').html(
+//                $.cloudinary.image(data.result.public_id, {
+//                    format: data.result.format,
+//                    version: data.result.version,
+//                    crop: 'scale'
+//                })
+//        );
+//        return true;
+//    });
+//    $('.cloudinary-fileupload').bind('cloudinarydone', function(e, data) {  $('.preview').html(
+//            $.cloudinary.image(data.result.public_id,
+//                    { format: data.result.format, version: data.result.version,
+//                        crop: 'scale'}));
+//        $('.image_public_id').val(data.result.public_id);
+//        return true;
+//    });
+    $("span.menu").click(function () {
+        $(".head-nav ul").slideToggle(300, function () {
+        });
+    });
+</script>
+</body>
+</html>

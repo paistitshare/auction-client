@@ -1,0 +1,37 @@
+<div ng-app="lot" ng-controller="LotCtrl" ng-init="initLot()" class="content-top">
+    <div class="container">
+        <div class="single">
+            <div class="col-md-8 single-top">
+                <h2>{{product.name}}</h2>
+                <img src="{{product.image}}" alt="" class="img-post" ng-hide="product.image==null"/>
+                <youtube-video ng-hide="product.video==null" video-url="product.video"></youtube-video>
+                <!--<div class="embed-responsive embed-responsive-16by9">-->
+                    <!---->
+                <!--</div>-->
+                <h5>{{product.description}}</h5>
+                <p id="content" class="sin">{{product.content}}</p>
+                <p class="sin"></p>
+                <div class="sucss-bottom">
+                    <ul>
+                        <li><a href="#"><i class="adm1"></i>by&nbsp<a href="/profile/{{product.user_id}}">{{product.user.username}}</a></a></li>
+                        <li><a href="#"><i class="tag"></i></a><span><a href="" ng-repeat="tag in product.Tags track by $index">{{tag.name}}&nbsp</a></span></li>
+                    </ul>
+                </div>
+                <div ng-init="initComments()" class="respon">
+                    <div ng-repeat="comment in comments track by $index" class="strator"><a href="/profile/{{comment.user.username}}">
+                        <h4>{{comment.user.username}}</h4></a>
+                        <p>{{comment.date | date: "MM dd yyyy hh:mm:ss"}}</p>
+                        <div class="strator-left"><img src="{{comment.user.image}}" alt="" class="img-responsive"/></div>
+                        <div class="strator-right">
+                            <p class="sin">{{comment.content}}</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-content-right">
+
+            </div>
+        </div>
+    </div>
+</div>

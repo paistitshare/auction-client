@@ -1,0 +1,33 @@
+<div class="login-page" ng-controller="SignInCtrl">
+    <div class="container" ng-init="sayHi()">
+        <div class="account_grid">
+            <div data-wow-delay="0.4s" class="col-md-6 login-left wow fadeInLeft">
+                <h3>NEW CUSTOMERS</h3>&#x9;&#x9;&#x9;&#x9;&#x9;
+                <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>&#x9;&#x9;&#x9;&#x9;&#x9;<a href="../signup/signup.html" class="acount-btn">Create an Account</a>
+            </div>&#x9;&#x9;&#x9;
+            <div data-wow-delay="0.4s" class="col-md-6 login-right wow fadeInRight">
+                <h3>REGISTERED CUSTOMERS</h3>&#x9;&#x9;&#x9;&#x9;&#x9;
+                <p>If you have an account with us, please log in.</p>&#x9;&#x9;&#x9;&#x9;&#x9;
+                <form>
+                    <div><span>Login
+              <label>*</label></span>&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        <input type="text" name="username" placeholder="Login" ng-model="user.username" required="" autofocus=""/>
+                    </div>&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    <div><span>Password
+              <label>*</label></span>&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        <input type="password" name="password" placeholder="Password" ng-model="user.password" required=""/>
+                    </div>&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    <input type="submit" ng-click="login()" value="Sign In"/>
+                    <p class="red">{{errorMessage}}</p>
+                    <div class="auth"><a href="auth/facebook" class="btn btn-facebook"><i class="fa fa-facebook social-icons">  Facebook</i></a><a href="auth/twitter" class="btn btn-twitter"><i class="fa fa-twitter social-icons">  Twitter</i></a><a href="auth/vkontakte" class="btn btn-vk"><i class="fa fa-vk social-icons">  VK</i></a></div>
+                </form>
+            </div>&#x9;
+            &#x9;&#x9;&#x9;&#x9;
+            <div class="clearfix">
+                <div id="message">
+                    <h1 class="text-center error-message"></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

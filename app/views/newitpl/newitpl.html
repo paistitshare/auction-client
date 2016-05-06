@@ -1,0 +1,40 @@
+<div class="main">
+    <div class="contact_top">
+        <div class="container">
+            <div ng-app="newitpl" ng-controller="NewITplCtrl" class="col-md-12 contact_left" ng-init="initTags()">
+                <h4>Create lot</h4>
+                <p></p>
+                <form>
+                    <div class="form_details">
+                        <label>Title:</label>
+                        <input type="text" ng-model="product.name" value="Product Name" class="text"/>
+                        <label>Description:</label>
+                        <input type="text" ng-model="product.description" value="Description" class="text"/>
+                        <label>Tags:</label>
+                        <tags-input type="text" name="tags" ng-model="product.tags" value="Tags" class="text">
+                            <!--<auto-complete source="loadTags($query)"></auto-complete>-->
+                        </tags-input>
+                        <label>Post Content:</label>
+                        <div>
+                            <textarea markdown-editor ng-model="product.content" rows="30" value="Markdown"></textarea>
+                        </div>
+                        <label>Price:</label>
+                        <input type="text" ng-model="product.price" value="Price" class="text"/>
+                        <div class="posts"></div>
+                        <div class="clearfix"></div>
+                        <div id="message">
+                            <h1 class="text-center error-message">{{ message }}</h1>
+                        </div>
+                        <div class="cont">
+                            <a href="" ng-click="upload()"><h4>Upload image</h4></a>
+                            <div id="refresh" class="preview"></div>
+                        </div>
+                        <div class="sub-button">
+                            <input type="submit" value="Publish" ng-click="createPost()"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="blog">
+    <div class="container">
+        <div ng-controller="AuctionsCtrl" data-ng-init="initAuctions();" class="blog-content">
+            <div class="blog-content-left">
+                <div class="blog-articals">
+                    <div ng-repeat="product in products track by $index" class="blog-artical">
+                        <div class="blog-artical-basicinfo">
+                            <ul>
+                                <li class="post-date">
+                                    <p><span>{{product.date | date: "dd"}}</span>
+                                        <label>{{product.date | date: "MMM, yyyy"}}</label>
+                                    </p>
+                                </li>
+                                <div class="clearfix"></div>
+                            </ul>
+                        </div>
+                        <div class="blog-artical-info">
+                            <div class="blog-artical-info-head">
+                                <h2><a href="#/lot/{{product.product_id}}">{{product.name}}</a></h2>
+                                <ul>
+                                    <li><i class="adm1"></i>by<a href="/profile/{{product.user_id}}">{{product.user_id}}</a>
+                                    </li>
+                                    <li><span></span><a href="#" ng-repeat="tag in product.tags track by $index">{{tag.name}}</a>
+                                    </li>
+                                    <div class="clearfix"></div>
+                                </ul>
+                            </div>
+                            <div class="blog-artical-info-text">
+                                <p>{{product.description}}<a href="#/lot/{{product.product_id}}">[...]</a></p>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-content-right">
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="main-1" ng-controller="SignUpCtrl">
+    <div class="container">
+        <div class="register">
+            <form name="regForm">
+                <div class="register-top-grid">
+                    <h3>PERSONAL INFORMATION</h3>
+                    <div data-wow-delay="0.4s" class="wow fadeInLeft">
+                        <span>User Name
+                            <label>*</label>
+                        </span>
+                        <input type="text" name="userName" ng-model="user.userName" placeholder="Login" ng-minlength="3" ng-maxlength="14" required autofocus/>
+                        <span class="red" ng-show="regForm.userName.$error.required && regForm.userName.$dirty">required field</span>
+                        <span class="red" ng-show="!regForm.userName.$error.minLength && !regForm.userName.$error.maxLength && regForm.userName.$error.pattern && regForm.userName.$dirty">Must start with a letter, and contain letters &amp; numbers only.</span>
+                        <span class="red" ng-show="!regForm.userName.$error.required && (regForm.userName.$error.minlength || regForm.userName.$error.maxlength) && regForm.userName.$dirty">Username must be between 3 and 14 characters.</span>
+                    </div>
+                    <div data-wow-delay="0.4s" class="wow fadeInRight">
+                        <span>First Name
+                            <label>*</label>
+                        </span>
+                        <input type="text" name="firstName" ng-model="user.firstName" placeholder="First Name" required/>
+                        <span class="red" ng-show="regForm.firstName.$error.required && regForm.firstName.$dirty">required field</span>
+                    </div>
+                    <div data-wow-delay="0.4s" class="wow fadeInRight">
+                        <span>Last Name
+                            <label>*</label>
+                        </span>
+                        <input type="text" name="lastName" ng-model="user.lastName" placeholder="Last Name" required/>
+                        <span class="red" ng-show="regForm.lastName.$error.required && regForm.lastName.$dirty">required field</span>
+                    </div>
+                    <div data-wow-delay="0.4s" class="wow fadeInRight">
+                        <span>E-mail
+                            <label>*</label>
+                        </span>
+                        <input type="text" name="email" ng-model="user.email" placeholder="E-mail" required/>
+                        <span class="red" ng-show="regForm.email.$error.required && regForm.email.$dirty">required field</span>
+                        <span class="red" ng-show="!regForm.email.$error.required && regForm.email.$error.email && regForm.email.$dirty">invalid email</span>
+                    </div>
+                    <div data-wow-delay="0.4s" class="wow fadeInRight">
+                        <span>About</span>
+                        <input type="text" name="about" ng-model="user.about" placeholder="Shortly about"/>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="register-bottom-grid">
+                    <div data-wow-delay="0.4s" class="wow"><span>Password
+              <label>*</label></span>
+                        <input type="password" name="password" id="password" ng-model="user.password" placeholder="Password" ng-minlength="6" ng-maxlength="20" required  />
+                        <span class="red" ng-show="regForm.password.$error.required && regForm.password.$dirty">required field</span>
+                        <span class="red" ng-show="!regForm.password.$error.required && (regForm.password.$error.minlength || regForm.password.$error.maxlength) && regForm.password.$dirty">Passwords must be between 6 and 20 characters.</span>
+                    </div>
+                    <div data-wow-delay="0.4s" class="wow"><span>Confirm Password
+              <label>*</label></span>
+                        <input type="password" name="password_c" id="password_c" ng-model="user.password_c" valid-password-c placeholder="Confirm Password" ng-minlength="6" ng-maxlength="20" required  />
+                        <span class="red" ng-show="regForm.password_c.$error.required && regForm.password_c.$dirty">Please confirm your password.</span>
+                        <span class="red" ng-show="!reForm.password_c.$error.required && regForm.password_c.$error.noMatch && regForm.password.$dirty">Passwords do not match.</span>
+                     </div>
+                </div>
+                <div class="register-but">
+                    <input ng-click="register()" type="submit" value="Sign up"/>
+                    <div class="clearfix"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

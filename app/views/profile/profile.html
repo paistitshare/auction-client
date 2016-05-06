@@ -1,0 +1,139 @@
+<div class="main" ng-controller="ProfileCtrl">
+    <div class="mission">
+        <div class="container">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4 class="panel-title">User Profile</h4>
+                </div>
+                <div class="panel-body" ng-init="initProfile()">
+                    <div class="row">
+                        <div align="center" class="col-md-3 col-lg-3"><img alt="User Pic" ng-src="{{user.image}}" class="img-circle img-responsive"/></div>
+                        <div class="col-md-9 col-lg-9">
+                            <table class="table table-user-information">
+                                <tbody>
+                                <tr>
+                                    <td>First Name:</td>
+                                    <td>{{user.first_name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Last Name:</td>
+                                    <td>{{user.last_name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>email</td>
+                                    <td>{{user.email}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Shortly about</td>
+                                    <td>{{user.about}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer"><a id="templates-toggle" type="button" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i></a><span class="pull-right"><a href="/edit-settings" type="button" class="btn btn-sm btn-warning"><i class="fa fa-pencil-square-o"></i></a></span></div>
+            </div>
+            <div id="templates" style="display: none;" class="recnt">
+                <div class="container">
+                    <h3>Publication templates</h3>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="air">
+                            <li class="ic-on"><i class="drib"></i></li>
+                            <li class="wb-dis">
+                                <h4>Image</h4>
+                            </li>
+                            <li class="dr-co">
+                                <h4>Text</h4>
+                            </li>
+                            <li class="b-tn">
+                                <div class="apply_btn">
+                                    <form>
+                                        <input type="submit" ng-click="createImageText()" value="Choose Template"/>
+                                    </form>
+                                </div>
+                            </li>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="air-1">
+                            <li class="ic-on"><i class="cli"></i></li>
+                            <li class="wb-dis">
+                                <h4>Video</h4>
+                            </li>
+                            <li class="dr-co">
+                                <h4>Text</h4>
+                            </li>
+                            <li class="b-tn">
+                                <div class="apply_btn">
+                                    <form>
+                                        <input type="submit" ng-click="createVideoText()" value="Choose Template"/>
+                                    </form>
+                                </div>
+                            </li>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="air">
+                            <li class="ic-on"><i class="facb"></i></li>
+                            <li class="wb-dis">
+                                <h4>Text</h4>
+                            </li>
+                            <li class="dr-co">
+                                <h4>Google Map</h4>
+                            </li>
+                            <li class="b-tn">
+                                <div class="apply_btn">
+                                    <form>
+                                        <input type="submit" ng-click="createMapText()" value="Choose Template"/>
+                                    </form>
+                                </div>
+                            </li>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="blog">
+            <div class="container">
+            <div ng-controller="ProfileCtrl" class="blog-content">
+                <div class="blog-content-left">
+                    <div infinite-scroll="loadMore()" infinite-scroll-distance="1" class="blog-articals">
+                        <div ng-repeat="post in posts" class="blog-artical">
+                            <div class="blog-artical-basicinfo">
+                                <ul>
+                                    <li class="post-date">
+                                        <p><span>{{post.updatedAt | date: "dd"}}</span>
+                                            <label>{{post.updatedAt | date: "MMM, yyyy"}}</label>
+                                        </p>
+                                    </li>
+                                    <div class="clearfix"></div>
+                                </ul>
+                            </div>
+                            <div class="blog-artical-info">
+                                <div class="blog-artical-info-head">
+                                    <h2><a href="/post/{{post.id}}">{{post.title}}</a></h2>
+                                    <ul>
+                                        <li><i class="adm1"></i>by<a href="/profile/{{post.username}}">{{post.username}}</a></li>
+                                        <li><span></span><a href="" ng-repeat="tag in post.tags track by $index">{{tag.name}}</a></li>
+                                        <li><span ng-if="post.template == &quot;image-text&quot;" class="pull-right edit-post"><a href="/edit-image-text/{{post.id}}"><i class="fa fa-edit fa-lg"></i></a></span><span ng-if="post.template == &quot;video-text&quot;" class="pull-right edit-post"><a href="/edit-video-text/{{post.id}}"><i class="fa fa-edit fa-lg"></i></a></span><span ng-if="post.template == &quot;map-text&quot;" class="pull-right edit-post"><a href="/edit-map-text/{{post.id}}"><i class="fa fa-edit fa-lg"></i></a></span></li>
+                                        <li><span class="pull-right delete-post"><a href="" ng-click="deletePost(&quot;{{post.id}}&quot;)"><i class="fa fa-times fa-lg"></i></a></span></li>
+                                        <div class="clearfix"></div>
+                                    </ul>
+                                </div>
+                                <div class="blog-artical-info-text">
+                                    <p>{{post.description}}<a href="/post/{{post.id}}">[...]</a></p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-content-right"></div>
+            </div>
+        </div>
+    </div>
+</div>
