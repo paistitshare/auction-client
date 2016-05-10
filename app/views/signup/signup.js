@@ -21,7 +21,7 @@ angular.module('auctionApp.signup', ['ngRoute', 'UserValidation'])
                 about: $scope.user.about,
                 image: "http://res.cloudinary.com/paistitshare/image/upload/v1461532325/default_profile_gf9dwt.jpg"
             };
-            $http.post("http://localhost:58228/api/users/", regInfo).then(function (result) {
+            $http.post("http://localhost:8081/api/users/", regInfo).then(function (result) {
                 deferred.resolve(result);
                 $location.url("/");
             }, function (error) {

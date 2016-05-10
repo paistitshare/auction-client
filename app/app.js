@@ -24,6 +24,34 @@ var auctionApp = angular.module('auctionApp', [
         };
     }])
 
+    .controller("commentsCtrl", ["$scope", "$http", "$window", function ($scope, $http, $window, $interval) {
+        $scope.initComments = function () {
+            $window.alert("ready");
+        };
+
+        $http.get('http://localhost:8081/api/getComments' + $scope.param).then(function (comments) {
+            $scope.comments = comments.data;
+        }, httpError);
+
+        $interval(callAtInterval, 5000);
+        function callAtInterval() {
+            $http.get('/getComments/' + $scope.param).then(function (comments) {
+                $scope.comments = comments.data;
+            }, httpError);
+        }
+
+        $scope.saveComment = function () {
+            $scope.comment.username = $('#username').text();
+            $scope.comment.PostId = $window.location.href.substr($window.location.href.lastIndexOf('/') + 1);
+            $http.post('/createComment', this.comment).then(function (data, status) {
+                if (data) $window.location.reload();
+            }, httpError);
+        };
+
+        function httpError(error) {
+            if (error) throw(error);
+        }
+    }])
     .factory("authService", ["$rootScope", "$http", "$q", "$window", "$location", function ($rootScope, $http, $q, $window, $location) {
         var userInfo;
 
@@ -31,7 +59,7 @@ var auctionApp = angular.module('auctionApp', [
             login: function (userName, password) {
                 var deferred = $q.defer();
 
-                $http.post("http://localhost:58228/api/users/login", {username: userName, password: password})
+                $http.post("http://localhost:8081/api/users/login", {username: userName, password: password})
                     .then(function (result) {
                         userInfo = {
                             userId: result.data.userid,
@@ -42,8 +70,8 @@ var auctionApp = angular.module('auctionApp', [
                         $rootScope.userInfo = JSON.parse($window.sessionStorage["userInfo"]);
                         deferred.resolve(userInfo);
                     }).catch(function (error) {
-                        deferred.reject(error);
-                    });
+                    deferred.reject(error);
+                });
 
                 return deferred.promise;
             },
@@ -63,8 +91,8 @@ var auctionApp = angular.module('auctionApp', [
     .run(["$rootScope", "$location", "authService", "$window", function ($rootScope, $location, authService, $window) {
 
         $rootScope.$on("$routeChangeStart", function (userInfo) {
-            if ($window.sessionStorage["userInfo"]) {
-                $rootScope.userInfo = JSON.parse($window.sessionStorage["userInfo"]);
+            if ($window.sessionStorage['userInfo']) {
+                $rootScope.userInfo = JSON.parse($window.sessionStorage['userInfo']);
             }
         });
 
@@ -73,11 +101,11 @@ var auctionApp = angular.module('auctionApp', [
 auctionApp.directive("markdownEditor", function () {
     return {
         restrict: "A",
-        require:  'ngModel',
-        link:     function (scope, element, attrs, ngModel) {
+        require: 'ngModel',
+        link: function (scope, element, attrs, ngModel) {
             $(element).markdown({
-                savable:false,
-                onChange: function(el){
+                savable: false,
+                onChange: function (el) {
                     ngModel.$setViewValue(el.getContent());
                 }
             });

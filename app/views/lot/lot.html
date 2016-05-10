@@ -4,28 +4,58 @@
             <div class="col-md-8 single-top">
                 <h2>{{product.name}}</h2>
                 <img src="{{product.image}}" alt="" class="img-post" ng-hide="product.image==null"/>
-                <youtube-video ng-hide="product.video==null" video-url="product.video"></youtube-video>
+                <youtube-video ng-show="product.video!=null" video-url="product.video"></youtube-video>
                 <!--<div class="embed-responsive embed-responsive-16by9">-->
-                    <!---->
+                <!---->
                 <!--</div>-->
-                <h5>{{product.description}}</h5>
+                <h4 class="description">{{product.description}}</h4>
                 <p id="content" class="sin">{{product.content}}</p>
-                <p class="sin"></p>
+                <div class="price col-md-8">
+                    <label>Price:&nbsp&nbsp<span>{{product.price}}&nbsp&nbsp</span><i class="fa fa-usd"></i></label>
+                    <div class="price_details">
+                        <form ng-show="userInfo.userName!=null">
+                            <input ng-model="price" type="text" placeholder="Your Price" class="form-control">
+                            <button class="btn btn-default" ng-click="suggestPrice()" value="">Suggest</button>
+                            <p class="red">{{priceError}}</p>
+                        </form>
+                    </div>
+                </div>
+
                 <div class="sucss-bottom">
                     <ul>
-                        <li><a href="#"><i class="adm1"></i>by&nbsp<a href="/profile/{{product.user_id}}">{{product.user.username}}</a></a></li>
-                        <li><a href="#"><i class="tag"></i></a><span><a href="" ng-repeat="tag in product.Tags track by $index">{{tag.name}}&nbsp</a></span></li>
+                        <li><a href="#"><i class="adm1"></i>by&nbsp<a href="/profile/{{product.user_id}}">{{product.user_id}}</a></a>
+                        </li>
+                        <li ng-init="initTags()"><a href="#"><i class="tag"></i></a><span><a href="" ng-repeat="tag in tags track by $index">{{tag.name}}&nbsp</a></span>
+                        </li>
                     </ul>
                 </div>
                 <div ng-init="initComments()" class="respon">
-                    <div ng-repeat="comment in comments track by $index" class="strator"><a href="/profile/{{comment.user.username}}">
+                    <div ng-repeat="comment in comments track by $index" class="strator"><a
+                            href="/profile/{{comment.user_id}}">
                         <h4>{{comment.user.username}}</h4></a>
                         <p>{{comment.date | date: "MM dd yyyy hh:mm:ss"}}</p>
-                        <div class="strator-left"><img src="{{comment.user.image}}" alt="" class="img-responsive"/></div>
+                        <div class="strator-left"><img
+                                src="http://res.cloudinary.com/paistitshare/image/upload/v1461532325/default_profile_gf9dwt.jpg"
+                                alt="" class="img-responsive"/></div>
                         <div class="strator-right">
                             <p class="sin">{{comment.content}}</p>
                         </div>
+
                         <div class="clearfix"></div>
+                        <div class="rep" ng-show="userInfo.userName!=null">
+                            <a href="#" class="reply">REPLY</a>
+                        </div>
+                    </div>
+                    <div class="comment" ng-show="userInfo.userName!=null">
+                        <h2>LEAVE A COMMENT</h2>
+                        <form>
+                            <textarea value='Message:' onfocus="this.value = '';"
+                                      onblur="if (this.value == '') {this.value = 'Message';}"
+                                      ng-model='comment.content'>Message</textarea>
+                            <div class="smt1">
+                                <input type='submit' value='add a comment' ng-click='saveComment()'>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

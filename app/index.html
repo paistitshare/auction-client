@@ -19,14 +19,15 @@
     <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.min.css">
     <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/bootstrap-markdown/css/bootstrap-markdown.min.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
 </head>
-<body>
+<body ng-controller="auctionAppCtrl">
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]-->
-<div class="header" ng-controller="auctionAppCtrl">
+<div class="header">
     <div class="header-bottom">
         <div class="container">
             <div class="logo"><a href="#/" class="img-responsive">
@@ -88,29 +89,7 @@
 <script src="bower_components/showdown/dist/showdown.js"></script>
 <script src="https://www.youtube.com/iframe_api"></script>
 <script src="../node_modules/angular-youtube-embed/dist/angular-youtube-embed.min.js"></script>
-<script src="js/toHtml.js"></script>
 <script type="text/javascript">
-//    $.cloudinary.config({api_key: '233287316764462', cloud_name: 'paistitshare'});
-//    $('.cloudinary-fileupload').bind('fileuploadstart', function (e) {
-//        $('.preview').html('Upload started...');
-//    });
-//    $('.cloudinary-fileupload').bind('cloudinarydone', function (e, data) {
-//        $('.preview').html(
-//                $.cloudinary.image(data.result.public_id, {
-//                    format: data.result.format,
-//                    version: data.result.version,
-//                    crop: 'scale'
-//                })
-//        );
-//        return true;
-//    });
-//    $('.cloudinary-fileupload').bind('cloudinarydone', function(e, data) {  $('.preview').html(
-//            $.cloudinary.image(data.result.public_id,
-//                    { format: data.result.format, version: data.result.version,
-//                        crop: 'scale'}));
-//        $('.image_public_id').val(data.result.public_id);
-//        return true;
-//    });
     $("span.menu").click(function () {
         $(".head-nav ul").slideToggle(300, function () {
         });

@@ -23,12 +23,13 @@ angular.module('auctionApp.newvtpl', ['ngRoute','ngTagsInput'])
     .controller('NewVTplCtrl', ["$http", "$q", "$scope", "$window", "$compile", "$location", function ($http, $q, $scope, $window, $compile, $location) {
         var deferred = $q.defer();
         $scope.initTags = function () {
-            $http.get("http://localhost:58228/api/get_tags").then(function(result){
+            $http.get("http://localhost:8081/api/tags").then(function(result){
                 var res = result.data;
                 var tags = res.map(function (tag) {
                     return {text: tag.name};
                 });
                 $scope.tags = JSON.stringify(tags);
+                deferred.resolve(result);
             }, httpError);
         };
 
@@ -48,7 +49,7 @@ angular.module('auctionApp.newvtpl', ['ngRoute','ngTagsInput'])
             });
             // var date = new Date();
             // prepared.date = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
-            $http.post("http://localhost:58228/api/products/", preparedObj).then(function (res) {
+            $http.post("http://localhost:8081/api/products/", preparedObj).then(function (res) {
                 $location.url("/profile/" + userId);
             }, httpError);
         };

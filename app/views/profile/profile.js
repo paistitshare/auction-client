@@ -25,7 +25,7 @@ angular.module('auctionApp.profile', ['ngRoute','infinite-scroll'])
         $scope.initProfile = function () {
             // console.log("userInfo from authService = " + JSON.parse(authService.getUserInfo().userName));
             var deferred = $q.defer();
-            $http.get("http://localhost:58228/api/users/" + $scope.userInfo.userId).then(function (result) {
+            $http.get("http://localhost:8081/api/users/" + $scope.userInfo.userId).then(function (result) {
                 deferred.resolve(result);
                 $scope.user = result.data;
             }, function (error) {
@@ -46,8 +46,5 @@ angular.module('auctionApp.profile', ['ngRoute','infinite-scroll'])
         };
         $scope.createVideoText = function () {
             $location.url("/newvtpl");
-        };
-        $scope.createMapText = function () {
-          $location.url("/newmtpl");
         };
     }]);

@@ -1882,7 +1882,7 @@ i.adm1 {
     text-decoration: underline;
 }
 
-.form_details input[type="text"], .form_details textarea {
+.form_details input[type="text"], .form_details input[type="number"] .form_details textarea {
     padding: 11px;
     width: 51%;
     font-size: 1em;
@@ -2299,7 +2299,7 @@ i.inter {
 }
 
 .single-top img {
-    width: 100%;
+
 }
 
 .main {
@@ -4143,4 +4143,86 @@ div.register-bottom-grid {
     width: 100%;
     height: 100%;
     border: 0;
+}
+.promo {
+    width: 100%;
+//margin-left: -10px;
+    margin-top: 20px;
+
+    padding-top: 100px !important;
+    padding-bottom: 80px !important;
+    height: 300px;
+    background: white;
+    border: 1px solid;
+    border-color: #b4ccce #b3c0c8 #9eb9c2;
+    border-radius: 10px;
+    outline: 0;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    -webkit-box-shadow: inset 0 1px white, 0 1px 2px rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 1px white, 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+.wrap {
+    float: left;
+    display: inline;
+    text-align: center;
+    width: 33.333333%;
+
+}
+.wrap p {
+    font: 'PT Sans Caption', Arial, sans-serif;
+    font-size: 16px;
+}
+.img-circle {
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.description {
+    color: #178ae4;
+    padding-top: 15px;
+}
+.price {
+    /*height: 20px;*/
+    width: 100%;
+}
+.price > label {
+    color: #178ae4;
+    font-size: large;
+    /*display: block;*/
+}
+
+.price > label > span {
+    color: #e4cd2a;
+}
+.price > label > i{
+    color: #4ee42f;
+}
+
+.price_details {
+    width: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /*padding: 11px;*/
+    /*width: 31%;*/
+    /*font-size: 1em;*/
+    /*margin: 10px 0px;*/
+    /*border: 1px solid #bbb;*/
+    /*-webkit-appearance: none;*/
+    /*float: left;*/
+    /*outline: none;*/
+    /*font-weight: 400;*/
+    /*border-radius: 0.3em;*/
+    /*-webkit-border-radius: 0.3em;*/
+    /*-o-border-radius: 0.3em;*/
+    /*-moz-border-radius: 0.3em;*/
+}
+.price_details > form > input[type="text"] {
+    width: 150px;
+    float: left;
+}
+.price_details > form > button {
+    margin-left: 10px;
+
 }

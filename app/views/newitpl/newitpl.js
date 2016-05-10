@@ -23,7 +23,7 @@ angular.module('auctionApp.newitpl', ['ngRoute','ngTagsInput'])
     .controller('NewITplCtrl', ["$http", "$q", "$scope", "$window", "$compile", "$location", function ($http, $q, $scope, $window, $compile, $location) {
         var deferred = $q.defer();
         $scope.initTags = function () {
-            $http.get("http://localhost:58228/api/tags").then(function(result){
+            $http.get("http://localhost:8081/api/tags").then(function(result){
                 var res = result.data;
                 var tags = res.map(function (tag) {
                     return {text: tag.name};
@@ -60,7 +60,7 @@ angular.module('auctionApp.newitpl', ['ngRoute','ngTagsInput'])
             });
             // var date = new Date();
             // prepared.date = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
-            $http.post("http://localhost:58228/api/products/", prepared).then(function (res) {
+            $http.post("http://localhost:8081/api/products/", prepared).then(function (res) {
                 $location.url("/profile/" + userId);
             }, httpError);
 
